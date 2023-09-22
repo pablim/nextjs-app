@@ -77,9 +77,9 @@ export default function Home() {
           </a>
         </Link>
        */}
-      Click in <Link href="/register">Register</Link> 
+      Click in <Link href="/register">Register</Link>
 
-      
+
       <div>
         {/*  
           Imagens podem ser carregadas de dentro da pasta public. 
@@ -102,8 +102,24 @@ export default function Home() {
           Imagens são sempre renderizadas de forma a evitar Cumulative Layout 
           Shift https://web.dev/cls/?gclid=CjwKCAjw9suYBhBIEiwA7iMhNFRUBqto5s2lT7jCZNSPFADM5wHsiYb7w07kZ2fZaHfKVTKtaCt4ohoCWNUQAvD_BwE
 
+          This folder (public) is also useful for robots.txt, favicon.ico, 
+          Google Site Verification, and any other static files (including 
+          .html)!
+
+          Note: Be sure to not have a static file with the same name as a file 
+          in the pages/ directory, as this will result in an error.
+
+          Priority attribute
+          When true, the image will be considered high priority and preload. 
+          Lazy loading is automatically disabled for images using priority. You 
+          should use the priority property on any image detected as the Largest 
+          Contentful Paint (LCP) element. It may be appropriate to have multiple 
+          priority images, as different images may be the LCP element for 
+          different viewport sizes.Should only be used when the image is 
+          visible above the fold. Defaults to false.
+
         */}
-        <Image 
+        <Image
           src="/images/profile.jpg" // Route of the image file
           height={144} // Desired size with correct aspect ratio
           width={144} // Desired size with correct aspect ratio
@@ -119,7 +135,28 @@ export default function Home() {
           - somente carregar a image quando entrar na viewport
 
         */}
-        <img src="/images/profile.jpg" alt="Your Name" width="100px"/>
+        <img src="/images/profile.jpg" alt="Your Name" width="100px" />
+
+        {/* <script>
+          function handleCredentialResponse(response) {
+            console.log("Encoded JWT ID token: " + response.credential)
+          }
+          window.onload = function () {
+            google.accounts.id.initialize({
+              client_id: "YOUR_GOOGLE_CLIENT_ID",
+              callback: handleCredentialResponse
+            })
+            
+            google.accounts.id.renderButton(
+          document.getElementById("buttonDiv"),
+          {theme: "outline", size: "large" }  // customization attributes
+          )
+
+          google.accounts.id.prompt(); // also display the One Tap dialog
+          }
+
+        </script> */}
+
       </div>
 
 
