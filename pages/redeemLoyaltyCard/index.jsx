@@ -49,10 +49,15 @@ const Html5QrcodePlugin = (props) => {
 
 
 export default function RedeemLoyaltyCard() {
+    
+    useEffect(() => {
+    }, [])
+
     const onNewScanResult = (decodedText, decodedResult) => {
         // handle decoded results here
+        alert(decodedText, decodedResult)
     };
-    
+
     return (
         <div className="App">
             <Html5QrcodePlugin
