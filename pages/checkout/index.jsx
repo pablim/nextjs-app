@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { useMercadoPago } from "../../hooks/useMercadoPago";
 import { checkout } from "../../api/services/Checkout";
-import {TextInput, Overlay, Loader} from "@pablovaz/reactjs-components";
+//import {TextInput, Overlay, Loader} from "@pablovaz/reactjs-components";
 import axios from "axios";
 
 import styles from './style.module.scss'
@@ -42,15 +42,15 @@ export default function Checkout () {
         <div className={styles.Container}>
             Pagamento
             {/* {loading && */}
-                <Overlay 
+                {/* <Overlay 
                     visible={true} 
                     onClick={()=>(console.log('aqui'))}
-                    contentPosition={'bottom'}>
+                    contentPosition={'bottom'}> */}
                     {/* <Loader /> */}
-                </Overlay> 
+                {/* </Overlay>  */}
             {/* } */}
 
-            <TextInput label={'Name teste: '} extraStyles={{border: '1px solid red'}}/>
+            {/* <TextInput label={'Name teste: '} extraStyles={{border: '1px solid red'}}/> */}
             <br />
             
             <form id="form-checkout" 
