@@ -1,67 +1,67 @@
 import axios from "axios";
-import { defaultHead } from "next/head";
 
 const getApiUrl = () => {
-    if (process.env.NEXT_PUBLIC_REACT_APP_ENVIRONMENT === "development") {
-        // return "http://127.0.0.1:5000"
-        //return "http://makeup-api.herokuapp.com"
-        return "http://localhost"
-    } else if (process.env.NEXT_PUBLIC_REACT_APP_ENVIRONMENT === "staging") {
-        return "http://stagingurl"
-    } else if (process.env.NEXT_PUBLIC_REACT_APP_ENVIRONMENT === "production") {
-        return "http://productionurl"
-    }
-}
-
-const apiUrl = () => {
-    const apiUrl = 'localhost'
-    return apiUrl
+    return process.env.NEXT_PUBLIC_API_URL
 }
 
 const defaultHeaders = {
-    'Content-Type': 'text/json'
+}
+
+const defaultGetHeaders = {
+    ...defaultHeaders,
+}
+const defaultPostHeaders = {
+    ...defaultHeaders,
 }
 
 const handleSuccess = (response) => {
-    console.log(response);
     return response
 }
 
 const handleError = (error) => {
-    console.log(error);
+    return new Promise((resolve, reject) => {
+        reject(error);
+    })
 }
 
-const makeRequest = {
 
+const getAuthToken = () => {
+    if (typeof(localStorage) != 'undefined')
+        return {'Authorization': `Bearer ` + localStorage?.getItem('authToken')}
+}
+
+const request = {
     get: async (endpoint, params, additionalHeaders={}) => {
         debugger
-
         const url = getApiUrl() + endpoint
-        return await axios.get(url, { params }, {headers: {
-                ...defaultHeaders,
-                ...additionalHeaders
-            }}
-        )
-            .then(handleSuccess)
-            .catch(handleError)
+
+        return axios.get(url, { 
+            params,
+            headers: {
+                ...defaultGetHeaders,
+                ...additionalHeaders,
+                ...getAuthToken()
+            },
+        })
+        .then(handleSuccess)
+        .catch(handleError)
     },
-    post: async (endpoint, params, additionalHeaders={}) => {
-        debugger
-        
+    post: async (endpoint, params, additionalHeaders={}) => {  
         const url = getApiUrl() + endpoint
 
-        return await axios.post(url, params, {headers: {
-                ...defaultHeaders,
-                ...additionalHeaders
-            }}
-        )
-            .then(handleSuccess)
-            .catch(handleError)
+        return axios.post(url, params, {
+            headers: {
+                ...defaultPostHeaders,
+                ...additionalHeaders,
+                ...getAuthToken()
+            }
+        })
+        .then(handleSuccess)
+        .catch(handleError)
     }
 }
 
 export {
     getApiUrl,
-    apiUrl,
-    makeRequest,
+    request,
 };

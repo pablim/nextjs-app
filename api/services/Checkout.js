@@ -1,8 +1,8 @@
-import { makeRequest } from "../Api";
+import { request } from "../Api";
 
 export const checkout = (data) => {
 
-    return makeRequest.post(
+    return request.post(
         '/mercadopago-payment.php', 
         data,
         {

@@ -1,0 +1,21 @@
+.inputContaier {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+    input {
+        border: 1px solid;
+        height: max-content;
+    }
+
+    .inputWaring {
+        font-size: 11px;
+        color: red
+    }
+
+    .inputInfo {
+        font-size: 11px;
+        color: rgb(34, 33, 33);
+    }
+}
+

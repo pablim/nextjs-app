@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+
+import { BackToHome } from "../../components";
+
 import { useMercadoPago } from "../../hooks/useMercadoPago";
 import { checkout } from "../../api/services/Checkout";
 //import {TextInput, Overlay, Loader} from "@pablovaz/reactjs-components";
-import axios from "axios";
 
 import styles from './style.module.scss'
 
@@ -40,6 +42,7 @@ export default function Checkout () {
 
     return (
         <div className={styles.Container}>
+            <BackToHome />
             Pagamento
             {/* {loading && */}
                 {/* <Overlay 

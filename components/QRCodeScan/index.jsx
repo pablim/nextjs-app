@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Html5QrcodeScanner } from "html5-qrcode";
 
 const qrcodeRegionId = "html5qr-code-full-region";
@@ -47,25 +47,15 @@ const Html5QrcodePlugin = (props) => {
     );
 };
 
-
-export default function RedeemLoyaltyCard() {
-    
-    useEffect(() => {
-    }, [])
-
-    const onNewScanResult = (decodedText, decodedResult) => {
-        // handle decoded results here
-        alert(decodedText, decodedResult)
-    };
-
+const QRCodeScan = ({onNewScanResult}) => {
     return (
-        <div className="App">
-            <Html5QrcodePlugin
-                fps={10}
-                qrbox={250}
-                disableFlip={false}
-                qrCodeSuccessCallback={onNewScanResult}
-            />
-        </div>
-    );
+        <Html5QrcodePlugin
+            fps={10}
+            qrbox={250}
+            disableFlip={false}
+            qrCodeSuccessCallback={onNewScanResult}
+        />
+    )
 }
+
+export default QRCodeScan

@@ -1,8 +1,7 @@
-import { makeRequest } from "../Api";
+import { request } from "../Api";
 
-export const loginRequest = (data) => {
-    debugger
-    return makeRequest.post('/auth', data).then((response) => {
+export const authentication = (data) => {
+    return request.post('/api/auth', data).then((response) => {
         return response
     })
 }
