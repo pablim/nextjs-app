@@ -1,0 +1,26 @@
+.layout {
+    height: 100dvh;
+
+    .navbar {
+        width: 100%;
+        height: 80px;
+        border: 1px solid;
+    }
+    
+    .sidebarContainer {
+        display: flex;
+        height: calc(100% - 80px);
+    
+        .sidebar {
+            width: 10%;
+            border: 1px solid;
+        }
+    
+        .mainContentContainer {
+            width: 90%;
+        }
+    }
+}
+
+
+

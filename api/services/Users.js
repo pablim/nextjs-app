@@ -1,8 +1,7 @@
 import { request } from "../Api";
 
-export const get = () => {
-    return request.get('/teste', {})
-    .then((response) => {
-        return response
-    })
-}
+const commonURL = '/api/user';
+
+export const addUser = (data) => request.post(`${commonURL}`, data)
+export const getUser = (data) => request.get(`${commonURL}`, data)
+export const getUserById = (data) => request.get(`${commonURL}/${data.id}`)

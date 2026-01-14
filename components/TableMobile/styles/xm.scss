@@ -1,0 +1,60 @@
+@media only screen and (min-width: 0) {
+
+	$row-padding: 8px; 
+
+	.container {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+
+		> div:first-child {
+			flex: 0;
+			position: sticky;
+			top: 0;
+			background-color: white;
+		}
+		
+		> div:last-child {
+			flex: 0;
+			position: sticky;
+			bottom: 0;
+			background-color: white;
+		}
+
+		.scrolled-table {
+			display: flex;
+			flex: 1;
+	
+			> div:first-child {
+				display: flex;
+				flex-direction: column;
+				background-color: silver;
+				width: 40%;
+				height: fit-content;
+	
+				& div {
+					border-bottom: 1px solid white;
+					padding: $row-padding;
+				}
+			}
+	
+			> div:last-child {
+				overflow-y: scroll;
+				scroll-behavior: smooth;
+				scrollbar-width: thin;
+				scroll-snap-type: y mandatory;
+				width: 60%;
+				
+				> div {
+					scroll-snap-align: start;
+	
+					> div {
+						border-bottom: 1px solid black;
+						padding: $row-padding;
+						overflow: hidden;
+					}
+				}
+			}
+		}
+	}
+}

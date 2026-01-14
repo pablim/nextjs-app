@@ -16,6 +16,16 @@ const nextConfig = {
       },
     ]
   },
+
+  transpilePackages: ["@pablovaz/jsprojlib"], // transpila sua lib
+  webpack: (config) => {
+    config.resolve.symlinks = true; // necessário se você usar npm link
+    return config;
+  },
+
+  compiler: {
+    styledComponents: true
+  }
 }
 
 module.exports = nextConfig

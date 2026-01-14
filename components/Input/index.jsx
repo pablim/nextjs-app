@@ -11,7 +11,10 @@ const Input = ({
     label, 
     error, 
     placeholder,
-    info
+    info,
+    readOnly,
+    disabled,
+    style
 }) => {
     const [value, setValue] = useState(defaultValue);
 
@@ -21,7 +24,7 @@ const Input = ({
 	};
 
     return (
-        <div className={styles.inputContaier}>
+        <div className={styles.inputContaier} style={style}>
             <label htmlFor={id} >{label}</label>
             <input 
                 id={id}
@@ -37,6 +40,8 @@ const Input = ({
                 onChange={handleChange}
                 placeholder={placeholder}
                 type={type ? type : 'text'}
+                readOnly={readOnly}
+                disabled={disabled}
             />
             {error && 
                 <span className={styles.inputWaring}>

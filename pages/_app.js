@@ -5,7 +5,7 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
-import { SessionProvider } from "next-auth/react"
+//import { SessionProvider } from "next-auth/react"
 /**
  * Para folhas de estilo global, como bootstrap ou nprogress, você deve importar 
  * o arquivo aqui dentro de pages/_app.js. 
@@ -14,10 +14,12 @@ import { SessionProvider } from "next-auth/react"
  */
 
 function MyApp({ Component, pageProps: { session, ...pageProps }, }) {
-  return (
-    <SessionProvider session={session}>
+  const getLayout = Component.getLayout ?? ((page) => page)
+
+  return getLayout(
+    // <SessionProvider session={session}>
       <Component {...pageProps} />
-    </SessionProvider>
+    // </SessionProvider>
   )
 }
 

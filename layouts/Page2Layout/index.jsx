@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import styles from './layout.module.scss'
-import utilStyles from '../styles/utils.module.css';
+import utilStyles from '../../styles/utils.module.css';
 
 const Layout = ({children, pageDescription, pageTitle}) => {
     return <div className={styles.container}>

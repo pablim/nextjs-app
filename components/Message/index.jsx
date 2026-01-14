@@ -4,7 +4,7 @@ const classesType = {
     error: "alert-danger" ,
     info: "alert-primary",
     warning: "alert-warning",
-    sucess: "alert-success"
+    success: "alert-success"
 }
 
 const Message = ({msgs, className}) => {

@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 
-export function useMercadoPago(publicKey, mode, isFormLoaded) {
+export function useMercadoPago(publicKey, mode, isFormLoaded, setIsLoading) {
 	const [mp, setMp] = useState()
 
-	useEffect(() => {		
+	useEffect(() => {
+		setIsLoading(true)
 		const script = document.createElement("script");
 		script.src = "https://sdk.mercadopago.com/js/v2";
 		script.async = true;
@@ -14,6 +15,12 @@ export function useMercadoPago(publicKey, mode, isFormLoaded) {
 
 			if (mode === 'coreMethods') {
 
+				/**
+				 * Integração via metodos core
+				 * https://www.mercadopago.com.br/developers/pt/docs/checkout-api/integration-configuration/card/integrate-via-core-methods
+				 */
+
+				// Inicializar campos do cartão
 				const cardNumberElement = mp.fields.create('cardNumber', {
 					placeholder: "Número do cartão"
 				}).mount('form-checkout__cardNumber');
@@ -24,18 +31,24 @@ export function useMercadoPago(publicKey, mode, isFormLoaded) {
 					placeholder: "Código de segurança"
 				}).mount('form-checkout__securityCode');	
 
+				// Obter tipos de documentos
 				(async function getIdentificationTypes() {
 					try {
-						const identificationTypes = await mp.getIdentificationTypes();
-						const identificationTypeElement = document.getElementById('form-checkout__identificationType');
+						const identificationTypes = await 
+							mp.getIdentificationTypes();
+						const identificationTypeElement = document
+							.getElementById('form-checkout__identificationType');
 				
-						createSelectOptions(identificationTypeElement, identificationTypes);
+						createSelectOptions(identificationTypeElement, 
+							identificationTypes);
 					} catch (e) {
 						return console.error('Error getting identificationTypes: ', e);
 					}
 				})();
 			
-				function createSelectOptions(elem, options, labelsAndKeys = { label: "name", value: "id" }) {
+				function createSelectOptions(elem, options, 
+					labelsAndKeys = { label: "name", value: "id" }) 
+				{
 					const { label, value } = labelsAndKeys;
 				
 					elem.options.length = 0;
@@ -56,9 +69,13 @@ export function useMercadoPago(publicKey, mode, isFormLoaded) {
 					elem.appendChild(tempOptions);
 				}
 
-				const paymentMethodElement = document.getElementById('paymentMethodId');
-				const issuerElement = document.getElementById('form-checkout__issuer');
-				const installmentsElement = document.getElementById('form-checkout__installments');
+				// Obter métodos de pagamento do cartão {
+				const paymentMethodElement = document
+					.getElementById('paymentMethodId');
+				const issuerElement = document
+					.getElementById('form-checkout__issuer');
+				const installmentsElement = document
+					.getElementById('form-checkout__installments');
 			
 				const issuerPlaceholder = "Banco emissor";
 				const installmentsPlaceholder = "Parcelas";
@@ -68,18 +85,18 @@ export function useMercadoPago(publicKey, mode, isFormLoaded) {
 					const { bin } = data;
 					try {
 						if (!bin && paymentMethodElement.value) {
-						clearSelectsAndSetPlaceholders();
-						paymentMethodElement.value = "";
+							clearSelectsAndSetPlaceholders();
+							paymentMethodElement.value = "";
 						}
 				
 						if (bin && bin !== currentBin) {
-						const { results } = await mp.getPaymentMethods({ bin });
-						const paymentMethod = results[0];
-				
-						paymentMethodElement.value = paymentMethod.id;
-						updatePCIFieldsSettings(paymentMethod);
-						updateIssuer(paymentMethod, bin);
-						updateInstallments(paymentMethod, bin);
+							const { results } = await mp.getPaymentMethods({ bin });
+							const paymentMethod = results[0];
+					
+							paymentMethodElement.value = paymentMethod.id;
+							updatePCIFieldsSettings(paymentMethod);
+							updateIssuer(paymentMethod, bin);
+							updateInstallments(paymentMethod, bin);
 						}
 				
 						currentBin = bin;
@@ -124,7 +141,8 @@ export function useMercadoPago(publicKey, mode, isFormLoaded) {
 						settings: securityCodeSettings
 					});
 				}
-	
+
+				// Obter banco emissor
 				async function updateIssuer(paymentMethod, bin) {
 					const { additional_info_needed, issuer } = paymentMethod;
 					let issuerOptions = [issuer];
@@ -145,6 +163,7 @@ export function useMercadoPago(publicKey, mode, isFormLoaded) {
 					}
 				};
 
+				// Obter quantidade de parcelas
 				async function updateInstallments(paymentMethod, bin) {
 					try {
 						const installments = await mp.getInstallments({
@@ -223,7 +242,7 @@ export function useMercadoPago(publicKey, mode, isFormLoaded) {
 						  identificationType,
 						} = cardForm.getCardFormData();
 			  
-						fetch("http://localhost/mercadopago-payment.php", {
+						fetch("https://localhost:5000/api/mercadopago/payment", {
 						  method: "POST",
 						  headers: {
 							"Content-Type": "application/json",
@@ -259,11 +278,17 @@ export function useMercadoPago(publicKey, mode, isFormLoaded) {
 					},
 				});
 			}
+
+			setIsLoading(false)
 		}
 		
 		document.body.appendChild(script);
 	}, [])
 
+	/**
+	 * Criar token do cartão
+	 * O token tem uma validade de 7 dias e só pode ser usado uma única vez.
+	 */
 	async function createCardToken(event) {
 		try {
 			const tokenElement = document.getElementById('token');
@@ -275,7 +300,7 @@ export function useMercadoPago(publicKey, mode, isFormLoaded) {
 					identificationNumber: document.getElementById('form-checkout__identificationNumber').value,
 				});
 				tokenElement.value = token.id;
-				formElement.requestSubmit();
+				//formElement.requestSubmit();
 				console.log('gerando token');
 			}
 		} catch (e) {
@@ -283,5 +308,5 @@ export function useMercadoPago(publicKey, mode, isFormLoaded) {
 		}
 	}
 
-	return [mp, createCardToken]
+	return [createCardToken]
 }

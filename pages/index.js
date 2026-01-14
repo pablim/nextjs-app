@@ -3,10 +3,12 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Head from 'next/head'
 import Script from 'next/script';
+//import { Button } from "@pablovaz/jsprojlib";
 
 export default function Home() {
   return (
     <div >
+
         {/* 
             Podemos mudar as informações de metadata pelo componente Head, ele 
             permite que possamos modificar o head da página.
@@ -144,6 +146,9 @@ export default function Home() {
             <Link href="/login">Login</Link>
             <Link href="/register">Register</Link>
             <Link href="/checkout">Checkout</Link>
+            <Link href="/faceDetection/mediapipe">Face detection media pipe</Link>
+            <Link href="/faceDetection/faceapi">Face detection faceapi</Link>
+            <Link href="/users">User</Link>
         </div>
 
         {/* <script>

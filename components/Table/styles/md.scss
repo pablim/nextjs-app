@@ -1,0 +1,51 @@
+@media only screen and (min-width: 768px) {
+    .container {
+        height: fit-content;
+        table {
+            display: table;
+            border-spacing: 0;
+            font-family: sans-serif;
+            width: 100%;
+
+            thead {
+                height: fit-content;
+
+                tr {
+                    height: fit-content;
+                    display: table-row;
+                    
+                    th {
+                        border: 1px solid teal;
+                        background-color: teal;
+                        color: white;
+                        text-align: left;
+                        padding: 16px;
+                        display: table-cell;
+                    }
+                }
+            }
+
+            tbody {
+                height: fit-content;
+                overflow-y: none;
+				scroll-behavior: none;
+				scrollbar-width: none;
+				scroll-snap-type: none;
+
+                tr {
+                    display: table-row;
+                    height: fit-content;
+
+                    td {
+                        padding: 16px;
+                        display: table-cell;
+                    }
+                }
+
+                > tr:nth-child(even) {
+                    background-color: silver;
+                }
+            }
+        }
+    }
+}

@@ -1,7 +1,5 @@
 import { request } from "../Api";
 
-export const authentication = (data) => {
-    return request.post('/api/auth', data).then((response) => {
-        return response
-    })
-}
+const commonURL = '/api/auth ';
+
+export const authentication = (data, headers) => request.post(`${commonURL}`, data, headers)
