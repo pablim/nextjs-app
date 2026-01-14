@@ -1,6 +1,6 @@
 import { gql, useQuery, useSubscription } from '@apollo/client';
 
-import { Table } from "../../components";
+import { Table } from "../components";
 
 const query = gql`
 	{

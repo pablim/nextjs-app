@@ -12,8 +12,8 @@ import { GraphQLWsLink } from '@apollo/client/link/subscriptions';
 import { createClient } from 'graphql-ws';
 import createUploadLink from "apollo-upload-client/createUploadLink.mjs";
 
-import FindByGraphql from "./FindByGraphql";
-import InsertByGraphql from "./InsertByGraphql";
+import FindByGraphql from "../../graphql/FindByGraphql";
+import InsertByGraphql from "../../graphql/InsertByGraphql";
 
 const cache = new InMemoryCache()
 
