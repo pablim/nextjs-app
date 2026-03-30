@@ -32,6 +32,11 @@ export default function Home() {
 
             */}
             {/* <script src="https://connect.facebook.net/en_US/sdk.js" /> */}
+
+            {/* Google Adsense */}
+            <script async 
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7294534999742323"
+                crossOrigin="anonymous"></script>
         </Head>
 
         {/* 
