@@ -1,0 +1,13 @@
+@media only screen and (min-width: 768px) {
+    .container {
+		.fieldsContainer {
+            flex-direction: row;
+			align-items: center;
+            justify-content: space-between;
+
+            .pageActions {
+				width: fit-content;
+			}
+		}
+	}
+}

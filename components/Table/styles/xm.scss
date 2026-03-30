@@ -1,0 +1,58 @@
+@media only screen and (min-width: 0) {
+	.container {
+		height: inherit;
+
+		table {
+			display: flex;
+			border: none;
+			border-spacing: 0;
+			height: 100%;
+			font-size: 11pt;
+
+			thead {
+				height: 100%;
+				flex: 1;
+
+				tr {
+					height: 100%;
+					display: flex;
+					flex-direction: column;
+
+					th {
+						border-bottom: 1px solid;
+						background-color: teal;
+						height: 80px;
+						padding: 0 4px;
+						display: flex;
+    					align-items: center;
+					}
+				}
+			}
+
+			tbody {
+				flex: 1;
+				height: 100%;
+				overflow-y: scroll;
+				scroll-behavior: smooth;
+				scrollbar-width: thin;
+				scroll-snap-type: y mandatory;
+
+				tr {
+					scroll-snap-align: start;
+					display: flex;
+					flex-direction: column;
+					height: 100%;
+
+					td {
+						padding: 0 4px;
+						height: 80px;
+						border-bottom: 1px solid;
+						overflow: hidden;
+						display: flex;
+    					align-items: center;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,41 @@
+@media only screen and (min-width: 0) {
+
+	.container {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 32px;
+	
+		margin-top: 32px;
+	
+		.fieldsContainer {
+			width: 90vw;
+
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+			
+			.pageActions {
+				width: 100%;
+				display: flex;
+				gap: 8px;
+			}
+
+			.topContent {
+				display: flex;
+				flex-direction: column;
+			}
+		}
+	
+		.listContainer {
+			display: flex;
+			flex-direction: column;
+			width: 90vw;
+			overflow-x: scroll;
+			height: 80vh;
+
+			margin-bottom: 16px;
+		}
+	}
+}

@@ -1,0 +1,147 @@
+table.scrolled-table {
+	border-spacing: 0;
+	font-family: sans-serif;
+	border-bottom: 4px solid teal;
+	width: 100%
+}
+table.scrolled-table thead tr th:first-child {
+	border-radius: 5px 0 0 0;
+}
+table.scrolled-table thead tr th:last-child {
+	border-radius: 0 5px 0 0;
+}
+table.scrolled-table tr:last-child td {
+	border: none
+}
+table.scrolled-table th {
+	border: 1px solid teal;
+	background-color: teal;
+	color: white;
+	text-align: left;
+}
+table.scrolled-table td, 
+table.scrolled-table th {
+	padding: 15px;
+}
+table.scrolled-table tr:nth-child(even) {
+	background-color: silver;
+}
+table.scrolled-table tr:nth-child(odd) {
+	background-color: white;
+}
+
+@media screen and (max-width: 600px) {
+	table.scrolled-table.responsive-scrolled {
+		display: flex;
+		border: none;
+		height: 200px;
+		overflow-y: scroll;
+		scroll-behavior: smooth;
+		scrollbar-width: thin;
+		scroll-snap-type: y mandatory;
+	}
+	table.scrolled-table.responsive-scrolled thead{
+		display:flex;
+		height: inherit;
+		position: absolute;
+		width: calc(50% - 12px);
+	}
+	table.scrolled-table.responsive-scrolled thead tr {
+		width: 100%;
+		height: inherit;
+		display: flex;
+		flex-direction: column;
+	}
+	table.scrolled-table.responsive-scrolled thead tr th {
+		flex: 1;
+		text-align: center;
+	}
+	table.scrolled-table.responsive-scrolled thead tr th:last-child {
+		border-radius: 0 0 0 5px;
+	}
+	table.scrolled-table.responsive-scrolled tbody {
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		left: 50%;
+		width: 50%;
+		height: inherit;
+	}
+	table.scrolled-table.responsive-scrolled tbody tr {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		min-height: 200px;
+	}
+	table.scrolled-table.responsive-scrolled tbody tr td {
+		flex: 1;
+	}
+	table.scrolled-table.responsive-scrolled tr {
+		scroll-snap-align: start;
+	}
+	table.scrolled-table.responsive-scrolled tr:nth-child(even) td {
+		border: 1px solid silver;
+	}
+	table.scrolled-table.responsive-scrolled tr:nth-child(odd) td {
+		border: 1px solid white;
+	}
+}
+
+
+table.scrolled-table.scrolled {
+	display: flex;
+	border: none;
+	height: 200px;
+	overflow-y: scroll;
+	scroll-behavior: smooth;
+	scrollbar-width: thin;
+	scroll-snap-type: y mandatory;
+}
+table.scrolled-table.scrolled thead{
+	display:flex;
+	height: inherit;
+	position: absolute;
+	width: calc(50% - 12px);
+}
+table.scrolled-table.scrolled thead tr {
+	width: 100%;
+	height: inherit;
+	display: flex;
+	flex-direction: column;
+}
+table.scrolled-table.scrolled thead tr th {
+	flex: 1;
+	text-align: center;
+}
+table.scrolled-table.scrolled thead tr th:last-child {
+	border-radius: 0 0 0 5px;
+}
+table.scrolled-table.scrolled tbody {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	left: 50%;
+	width: 50%;
+	height: inherit;
+}
+table.scrolled-table.scrolled tbody tr {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	min-height: 200px;
+}
+table.scrolled-table.scrolled tbody tr td {
+	flex: 1;
+}
+table.scrolled-table.scrolled tr {
+	scroll-snap-align: start;
+}
+table.scrolled-table.scrolled tr:nth-child(even) td {
+	border: 1px solid silver;
+}
+table.scrolled-table.scrolled tr:nth-child(odd) td {
+	border: 1px solid white;
+}
+.scrolled-container {
+	position: relative
+}
