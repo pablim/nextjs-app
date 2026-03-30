@@ -149,6 +149,7 @@ export default function Home() {
             <Link href="/faceDetection/mediapipe">Face detection media pipe</Link>
             <Link href="/faceDetection/faceapi">Face detection faceapi</Link>
             <Link href="/users">User</Link>
+            <Link href="/classGenerator">Gerador de classes</Link>
         </div>
 
         {/* <script>
