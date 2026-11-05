@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal Component Atacadão Desktop renders modal 1`] = `
+<div>
+  <button
+    class="Button primary medium  atacadao mobile"
+    type="button"
+  >
+    Show modal
+  </button>
+  <div
+    class="wrapper"
+  >
+    <div
+      class="Modal "
+    >
+      <div
+        class="content"
+      >
+        Hi, im a modal
+        <button
+          class="Button primary medium  atacadao mobile"
+          type="button"
+        >
+          OK
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Modal Component Atacadão Mobile renders modal 1`] = `
+<div>
+  <button
+    class="Button primary medium  atacadao mobile"
+    type="button"
+  >
+    Show modal
+  </button>
+  <div
+    class="wrapper"
+  >
+    <div
+      class="Modal "
+    >
+      <div
+        class="content"
+      >
+        Hi, im a modal
+        <button
+          class="Button primary medium  atacadao mobile"
+          type="button"
+        >
+          OK
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Modal Component Cotabest Desktop renders modal 1`] = `
+<div>
+  <button
+    class="Button primary medium  atacadao mobile"
+    type="button"
+  >
+    Show modal
+  </button>
+  <div
+    class="wrapper"
+  >
+    <div
+      class="Modal "
+    >
+      <div
+        class="content"
+      >
+        Hi, im a modal
+        <button
+          class="Button primary medium  atacadao mobile"
+          type="button"
+        >
+          OK
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Modal Component Cotabest Mobile renders modal 1`] = `
+<div>
+  <button
+    class="Button primary medium  atacadao mobile"
+    type="button"
+  >
+    Show modal
+  </button>
+  <div
+    class="wrapper"
+  >
+    <div
+      class="Modal "
+    >
+      <div
+        class="content"
+      >
+        Hi, im a modal
+        <button
+          class="Button primary medium  atacadao mobile"
+          type="button"
+        >
+          OK
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

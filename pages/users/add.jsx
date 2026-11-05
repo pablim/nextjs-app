@@ -1,9 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { addUser } from "../../api/services/Users";
 import bcrypt from "bcryptjs";
 
-import { PageLayout, MainLayout } from "../../layouts";
+import { addUser } from "../../api/services/Users";
+import { AppLayout } from "../../layouts";
+import SideLinks from '../../components/components/SideLinks';
+import Form from "../../components/components/Form";
 
 export default function Add() {
 	const router = useRouter();
@@ -11,6 +13,7 @@ export default function Add() {
 	const [name, setName] = useState('')
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
+	const [fields, setFields] = useState({})
 	const [msgs, setMsgs] = useState([])
 
 	const onSubmit = (e) => {
@@ -22,7 +25,7 @@ export default function Add() {
 		//var comp = bcrypt.compareSync(password, hash); // true
 		
 		addUser({name, email, hash}).then((response) => {
-			debugger
+			
 			console.log('addUser', response);
 			setName('')
 			setEmail('')
@@ -33,7 +36,7 @@ export default function Add() {
 				setMsgs([{text: 'Success', type: "success"}])
 			}
 		}).catch((error) => {
-			debugger
+			
 			// error.response.data.msgs
 			// error.response.status
 			// error.response.statusText
@@ -44,29 +47,14 @@ export default function Add() {
 	}
 
 	return (
-		<PageLayout>
-			<MainLayout msgs={msgs} pageTitle={'Add user'} isLoading={isLoading}>
-				<form onSubmit={onSubmit}>
-					<input type='text' onChange={(e) => setName(e.target.value)} 
-						value={name} placeholder='name'/>
-					<br />
-					<input type='text' onChange={(e) => setEmail(e.target.value)} 
-						value={email} placeholder='email'/>
-					<br />
-					<input type='text' onChange={(e) => setPassword(e.target.value)} 
-						value={password} placeholder='senha'/>
-					<br />
-					<input type='submit'  value="Salvar"/>
-				</form>
-			</MainLayout>
-		</PageLayout>
+		<AppLayout 
+			sideBarContent={<SideLinks />}
+			mainContent={
+				<Form 
+					fields={fields} 
+					setFields={setFields} 
+					onSubmit={onSubmit}/>
+			}
+		/>
 	)
 }
-
-// Add.getLayout = function getLayout(page) {
-// 	return (
-// 		<PageLayout pageTitle={'Add user'}>
-// 			<MainLayout>{page}</MainLayout>
-// 		</PageLayout>
-// 	)
-// }

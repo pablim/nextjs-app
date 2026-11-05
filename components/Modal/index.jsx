@@ -1,16 +1,28 @@
-import React from 'react';
 import styles from './Modal.module.scss';
 
-export function Modal({ show, setShow, className, children }, ...args) {
+export function Modal({ 
+		show, 
+		setShow, 
+		className, 
+		children, 
+		wrapperStyle, 
+		style
+	}, 
+	...args
+){
 	if (!show) return null;
+
 	return (
 		<div 
 			className={styles.wrapper} 
-			onClick={
-				(e) => {setShow(false)}
-			}
+			style={wrapperStyle}
+			onClick={(e) => setShow(false)}
 		>
-			<div className={[styles.Modal, className].join(' ')} {...args}>
+			<div className={[styles.Modal, className].join(' ')} 
+				style={style} 
+				{...args}
+				onClick={(e) => e.stopPropagation()}
+			>
 				<div className={styles.content}>{children}</div>
 			</div>
 		</div>

@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  //reactStrictMode: false, // false para testar mercado pago, depois voltar para true
   swcMinify: true,
 
   async headers() {

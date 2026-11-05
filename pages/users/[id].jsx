@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { getUserById } from "../../api/services/Users";
 
-import { PageLayout, MainLayout } from "../../layouts";
+import { AppLayout } from "../../layouts";
 
 export default function Show() {
 	const router = useRouter();
@@ -22,20 +22,16 @@ export default function Show() {
 	}, [id])
 
 	return (
-		<PageLayout>
-			<MainLayout pageTitle={'Show user'} >
-				<div>Id: {user.id}</div>
-				<div>Nome: {user.name}</div>
-				<div>E-mail: {user.email}</div>
-			</MainLayout>
-		</PageLayout>
+		<AppLayout 
+			pageTitle={'Show user'} 
+			mainContent={
+				<>
+					<div>Id: {user.id}</div>
+					<div>Nome: {user.name}</div>
+					<div>E-mail: {user.email}</div>
+				</>
+			}
+		/>
+		
 	)
 }
-
-// Show.getLayout = function getLayout(page) {
-// 	return (
-// 		<PageLayout pageTitle={'List user'}>
-// 			{page}
-// 		</PageLayout>
-// 	)
-// }
