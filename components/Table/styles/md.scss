@@ -1,51 +1,122 @@
 @media only screen and (min-width: 768px) {
-    .container {
-        height: fit-content;
-        table {
-            display: table;
-            border-spacing: 0;
-            font-family: sans-serif;
-            width: 100%;
 
-            thead {
-                height: fit-content;
+    .main {
+        width: 100%; 
+        display: flex; 
+        gap: 16px;
+        
+        .actionsContainer {
+            display: flex ;
+            gap: 8px;
 
-                tr {
-                    height: fit-content;
-                    display: table-row;
-                    
-                    th {
-                        border: 1px solid teal;
-                        background-color: teal;
-                        color: white;
-                        text-align: left;
-                        padding: 16px;
-                        display: table-cell;
-                    }
-                }
+            .action {
+                cursor: pointer;
+                border: 1px solid black;
+                padding: 4px;
             }
 
-            tbody {
-                height: fit-content;
-                overflow-y: none;
-				scroll-behavior: none;
-				scrollbar-width: none;
-				scroll-snap-type: none;
+            .inputSearch {
+                border: 1px solid;
+                padding: 4px;
+            }
 
-                tr {
-                    display: table-row;
+            .total {
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        .container {
+            width: 100%;
+    
+            min-height: 400px;
+            overflow: auto;
+    
+            table {
+                display: table;
+                border-spacing: 0;
+                font-family: sans-serif;
+                width: 100%;
+                height: auto;
+    
+                thead {
                     height: fit-content;
+    
+                    tr {
+                        height: fit-content;
+                        display: table-row;
+                        position: sticky;
+                        top: 0;
+                        z-index: 3;
+                        
+                        th {
+                            border: 1px solid teal;
+                            background-color: teal;
+                            color: white;
+                            text-align: left;
+                            padding: 16px;
+                            display: table-cell;
+                            height: 30px;
+                        }
 
-                    td {
-                        padding: 16px;
-                        display: table-cell;
+                        .actionsColumn {
+                            position: sticky;
+                            border-left: 1px solid red;
+                            right: 0vw;
+                        }
                     }
                 }
+    
+                tbody {
+                    height: fit-content;
+                    overflow-y: none;
+                    scroll-behavior: none;
+                    scrollbar-width: none;
+                    scroll-snap-type: none;
+    
+                    tr {
+                        display: table-row;
+                        height: fit-content;
+                        position: relative;
+                        z-index: 1;
+    
+                        td {
+                            padding: 16px;
+                            display: table-cell;
+                            height: 30px;
+    
+                        }
 
-                > tr:nth-child(even) {
-                    background-color: silver;
+                        .actionsColumn {
+                            position: sticky;
+                            border-top: 1px solid red;
+                            right: 0vw;
+                            min-width: 80px;
+                            max-width: 300px;
+
+                            .actionContainer {
+                                display: flex;
+                                gap: 8px;
+                            }
+
+                            .action {
+                                cursor: pointer;
+                            }
+                        }
+
+                    }
+    
+                    > tr:nth-child(even) {
+                        background-color: silver;
+                    }
                 }
             }
         }
+
+        .modalView {
+            width: 80vw;
+            height: 80vh;
+        }
     }
+
 }

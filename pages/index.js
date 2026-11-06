@@ -3,7 +3,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Head from 'next/head'
 import Script from 'next/script';
-//import { Button } from "@pablovaz/jsprojlib";
+import { Button, Loader } from "@pablovaz/reactjs-components-lib";
+//import { Button, Loader } from "@pablovaz/reactjs-components-lib";
 
 export default function Home() {
   return (
@@ -151,10 +152,18 @@ export default function Home() {
             <Link href="/login">Login</Link>
             <Link href="/register">Register</Link>
             <Link href="/checkout">Checkout</Link>
+            <Link href="/checkoutV2">CheckoutV2</Link>
             <Link href="/faceDetection/mediapipe">Face detection media pipe</Link>
             <Link href="/faceDetection/faceapi">Face detection faceapi</Link>
             <Link href="/users">User</Link>
             <Link href="/classGenerator">Gerador de classes</Link>
+            <Link href="/randomPerson">Random Person</Link>
+            <Link href="/listsOfDatas">Listas de dados</Link>
+            <Link href="/buyList">Lista de compras</Link>
+            <Link href="/dashboard">Dashboard</Link>
+            <Link href="/pointAutomation">Point Automation</Link>
+
+            <Button onClick={() => alert('clicou')}>Clique aqui</Button>
         </div>
 
         {/* <script>

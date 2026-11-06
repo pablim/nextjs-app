@@ -1,0 +1,33 @@
+import { useMercadoPagoCardForm } from "../../hooks/useMercadoPagoCardForm";
+
+import styles from './style.module.scss'
+
+export default function Checkout () {
+
+    const publicKey = process.env.NEXT_PUBLIC_MERCADO_PAGO_API_KEY;
+
+    useMercadoPagoCardForm(publicKey);
+
+    return (
+        <div>
+            Pagamento
+            <br />
+
+            <form id="form-checkout" className={styles.formCheckout}>
+                <div id="form-checkout__cardNumber" className={styles.container}></div>
+                <div id="form-checkout__expirationDate" className={styles.container}></div>
+                <div id="form-checkout__securityCode" className={styles.container}></div>
+                <input type="text" id="form-checkout__cardholderName" />
+                <select id="form-checkout__issuer"></select>
+                <select id="form-checkout__installments"></select>
+                <select id="form-checkout__identificationType"></select>
+                <input type="text" id="form-checkout__identificationNumber" />
+                <input type="email" id="form-checkout__cardholderEmail" />
+
+                <button type="submit" id="form-checkout__submit">Pagar</button>
+                <progress value="0" className="progress-bar">Carregando...</progress>
+            </form>
+
+        </div>
+    )
+}

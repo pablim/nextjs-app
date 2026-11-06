@@ -1,0 +1,141 @@
+.Container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	
+	height: 100vh;
+
+	.loaderArea {
+		position: absolute;
+		background: #ffffff99;
+		z-index: 9;
+
+		> div {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 100dvw;
+			height: 100dvh;
+		}
+	}
+
+	.amountInputContainer {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100dvw;
+		height: 100dvh;
+
+		> div {
+			display: flex; 
+			flex-direction: column; 
+			gap: 16px;
+
+			label {
+				font-size: 20pt
+			}
+
+			.inputContainer {
+				display: flex;
+				align-items: end;
+				gap: 16px;
+				font-size: 48pt;
+				color: green;
+
+				input {
+					border-bottom: 1px solid;
+					width: 300px;
+				}
+			}
+
+			.buttonContainer {
+				display: flex; 
+				width: 100%;
+				padding: 32px;
+				justify-content: flex-end;
+
+				button {
+					border: 1px solid;
+					padding: 16px;
+					background-color: black;
+					color: white;
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	.main {
+		display: flex;
+		width: 100%;
+		padding: 32px;
+		gap: 64px;
+		
+		.resumeTable {
+			border-collapse: collapse;
+			width: 100%;
+			
+			td, th {
+				padding: 16px 16px;
+				border: 1px solid;
+	
+				border-left: none;
+				border-right: none;
+			}
+	
+			thead tr:first-child th {
+				border: none;
+			}
+		}
+	
+		.summaryContainer {
+			flex: 1;
+
+			.summaryHeader {
+				display: flex;
+				justify-content: space-between;
+			}
+		}
+	
+		.total {
+			display: flex;
+			justify-content: end;
+			padding: 8px 0px;
+		}
+	
+		.paymentContainer {
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+			flex: 1;
+	
+			div form {
+				padding: 0;
+			}
+		}
+
+		.directAmountContainer {
+			height: 500px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			> div {
+				font-size: 48pt;
+				color: green;
+				display: flex;
+				align-items: end;
+
+				.currency {
+					font-size: 12pt;
+				}
+
+				.amount {
+					line-height: 90%;
+				}
+			}
+		}
+	}
+
+}
+

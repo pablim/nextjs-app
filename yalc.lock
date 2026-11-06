@@ -1,0 +1,9 @@
+{
+  "version": "v1",
+  "packages": {
+    "@pablovaz/minha-biblioteca": {
+      "signature": "701174a36a05f0d1712256898ff40fbe",
+      "file": true
+    }
+  }
+}

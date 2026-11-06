@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  //reactStrictMode: false, // false para testar mercado pago, depois voltar para true
   swcMinify: true,
 
   async headers() {
@@ -17,7 +18,7 @@ const nextConfig = {
     ]
   },
 
-  transpilePackages: ["@pablovaz/jsprojlib"], // transpila sua lib
+  transpilePackages: ["@pablovaz/reactjs-components-lib"], // transpila sua lib
   webpack: (config) => {
     config.resolve.symlinks = true; // necessário se você usar npm link
     return config;

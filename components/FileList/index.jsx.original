@@ -1,0 +1,149 @@
+import styled from "styled-components";
+import { BsFillCloudCheckFill } from "react-icons/bs";
+import { MdDelete } from "react-icons/md";
+
+import Text from "@components/Text/Text";
+import { usePermission } from "hooks/usePermission";
+import { PERMISSIONS } from "constants/settings";
+
+const ImageContainer = styled.div`
+    position: relative;
+    display: inline-block;
+    border-radius: 20px;
+    max-width: 200px;
+    max-height: 300px;
+    margin: 10px;
+    :hover {
+        cursor: pointer;
+    }
+`;
+
+const AddedButton = styled.button`
+    display: flex;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: transparent;
+    color: ${({ theme }) => theme.purple};
+    border-radius: 5px;
+    border: none;
+    cursor: auto;
+    padding: 5px 10px;
+`;
+
+const DeleteButton = styled.button`
+    display: flex;
+    margin-left: 5px;
+    background-color: ${({ theme }) => theme.danger};
+    color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 0px 2px;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    height: 20px;
+`;
+
+const ImagePreview = styled.img`
+    max-width: 200px;
+    max-height: 300px;
+    border-radius: 20px;
+    border: 1px solid ${({ theme }) => theme.purple};
+`;
+
+const List = styled.ul`
+    margin: 0; 
+    padding: 0; 
+    display: flex;
+    flexWrap: wrap
+`;
+
+const ItemList = styled.li`
+    display: flex;
+    alignItems: center;
+    cursor: pointer;
+    marginBottom: "4px";
+`;
+
+const FileList = ({
+    files,
+    handleDonwload,
+    handleDelete,
+    canDelete = true,
+    showPreview = false,
+}) => {
+    const { hasPermission } = usePermission();
+
+    return files?.length ? (
+        <List>
+            {files.map((file, i) => {
+                const splitFilename = file.file_path?.split("/");
+                const filename = splitFilename?.[splitFilename?.length - 1];
+                return (
+                    <ItemList key={i} >
+                        {handleDonwload ? (
+                            <ImageContainer key={i}>
+                                <ImagePreview
+                                    src={file.src}
+                                    alt="Image Preview"
+                                    onClick={() =>
+                                        handleDonwload(
+                                            file.file_path,
+                                            file.file_path,
+                                        )
+                                    }
+                                />
+                                {!file.newImg && (
+                                    <AddedButton>
+                                        <BsFillCloudCheckFill size={20} />
+                                    </AddedButton>
+                                )}
+                                <div style={{ display: "flex" }}>
+                                    <Text onClick={() =>
+                                        handleDonwload(
+                                            file.file_path,
+                                            file.file_path,
+                                        )
+                                    } style={{ wordWrap: "break-word" }}>
+                                        {filename}
+                                    </Text>
+                                    {(canDelete || file?.newImg) && (
+                                        <DeleteButton
+                                            onClick={() =>
+                                                handleDelete(file, false)
+                                            }
+                                            disabled={
+                                                !hasPermission(
+                                                    PERMISSIONS.DELETE,
+                                                )
+                                            }
+                                        >
+                                            <MdDelete size={20} />
+                                        </DeleteButton>
+                                    )}
+                                </div>
+                                {showPreview === filename && (
+                                    <PreviewContainer
+                                        onClick={() => togglePreview(null)}
+                                    >
+                                        <PreviewImage
+                                            src={file.src}
+                                            alt="Preview"
+                                        />
+                                        <Text>{filename}</Text>
+                                    </PreviewContainer>
+                                )}
+                            </ImageContainer>
+                        ) : (
+                            <Text>{filename}</Text>
+                        )}
+                    </ItemList>
+                );
+            })}
+        </List>
+    ) : (
+        <></>
+    );
+};
+
+export default FileList;
