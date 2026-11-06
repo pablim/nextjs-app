@@ -4,7 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/router";
 
 import { BackToHome } from "../../../components";
-import { Loader } from "@pablo/react-components-lib";
+import { Loader } from "@pablovaz/reactjs-components-lib";
 import { useMercadoPago } from "../../../hooks/useMercadoPago";
 import { checkout } from "../../../api/services/Checkout";
 import { totalValue } from "../../../utils/checkout";

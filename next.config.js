@@ -18,7 +18,7 @@ const nextConfig = {
     ]
   },
 
-  transpilePackages: ["@pablovaz/jsprojlib"], // transpila sua lib
+  transpilePackages: ["@pablovaz/reactjs-components-lib"], // transpila sua lib
   webpack: (config) => {
     config.resolve.symlinks = true; // necessário se você usar npm link
     return config;

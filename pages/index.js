@@ -3,7 +3,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Head from 'next/head'
 import Script from 'next/script';
-import { Button, Loader } from "@pablo/react-components-lib";
+import { Button, Loader } from "@pablovaz/reactjs-components-lib";
+//import { Button, Loader } from "@pablovaz/reactjs-components-lib";
 
 export default function Home() {
   return (
