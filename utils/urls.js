@@ -1,3 +1,5 @@
-export const urlCatalog = "https://localhost:5001/api/mercadopago/catalog"
-export const urlOrder = "https://localhost:5001/api/mercadopago/order"
-export const urlPayment = "https://localhost:5001/api/mercadopago/payment"
+const apiURL = process.env.NEXT_PUBLIC_API_URL;
+
+export const urlCatalog = `${apiURL}/api/mercadopago/catalog`
+export const urlOrder = `${apiURL}/api/mercadopago/order`
+export const urlPayment = `${apiURL}/api/mercadopago/payment`
